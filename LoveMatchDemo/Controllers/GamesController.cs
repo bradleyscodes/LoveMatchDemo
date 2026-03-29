@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using LoveMatchDemo.Models;
+using LoveMatchDemo.Data;
 
 namespace LoveMatchDemo.Controllers
 {
@@ -16,9 +17,9 @@ namespace LoveMatchDemo.Controllers
         }
 
         [HttpGet]
-        public IActionResult<IEnumerable<Game>> GetGames()
+        public ActionResult<IEnumerable<Game>> GetGames()
         {   
-            var games = _context.Game.ToList();
+            var games = _context.Games.ToList();
             return Ok(games);
         }
     }
