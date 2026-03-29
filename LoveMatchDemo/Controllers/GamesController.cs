@@ -1,12 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using LoveMatchDemo.Models;
 
 namespace LoveMatchDemo.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
+
     public class GamesController : Controller
     {
-        public IActionResult Index()
+        private readonly DataContext _context;
+
+        public GamesController(DataContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        [HttpGet]
+        public IActionResult<IEnumerable<Game>> GetGames()
+        {   
+            var games = _context.Game.ToList();
+            return Ok(games);
         }
     }
 }
