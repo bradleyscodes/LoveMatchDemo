@@ -1,0 +1,15 @@
+services:
+  lovematchdemo:
+    image: ${DOCKER_REGISTRY-}lovematchdemo
+    build:
+      context: .
+      dockerfile: LoveMatchDemo/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+    restart: unless-stopped
+        
+
+
